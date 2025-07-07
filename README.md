@@ -96,7 +96,10 @@
   </script>
 
   <!-- ÁUDIO -->
-  <audio id="musica" src="musica.mp3" type="audio/mpeg" loop></audio>
+  <audio id="musica" src="<audio controls>
+  <source src="Edward Sharpe & The Magnetic Zeros - Home (Official Video).mp3" type="audio/mpeg" />
+</audio>
+" type="audio/mpeg" loop></audio>
 
   <script>
     function tocarMusica() {
