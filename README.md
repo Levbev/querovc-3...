@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Mensagem Especial</title>
+  <meta charset="UTF-8" />
+  <title>Mensagem Especial com Música</title>
   <style>
+    /* Reset básico e estilo da página */
     body {
       margin: 0;
       background-color: black;
       color: white;
       font-family: Arial, sans-serif;
       overflow: hidden;
+      height: 100vh;
+      position: relative;
     }
 
+    /* Container da mensagem */
     .container {
       position: absolute;
       top: 45%;
@@ -19,19 +23,45 @@
       transform: translate(-50%, -50%);
       background-color: red;
       border: 3px solid white;
-      padding: 30px;
+      padding: 30px 40px;
       border-radius: 15px;
       text-align: center;
       font-size: 1.5em;
       box-shadow: 0 0 20px red;
+      max-width: 90vw;
+      user-select: none;
     }
 
+    /* Botão estilizado */
+    .btn-musica {
+      margin-top: 20px;
+      display: inline-block;
+      background-color: white;
+      color: red;
+      padding: 10px 25px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 10px white;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-size: 1.2em;
+      border: none;
+    }
+    .btn-musica:hover {
+      background-color: red;
+      color: white;
+      box-shadow: 0 0 20px red;
+    }
+
+    /* Corações animados */
     .heart {
       position: absolute;
       font-size: 24px;
-      animation: float 5s linear infinite;
+      animation-name: float;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
     }
-
     @keyframes float {
       0% {
         transform: translateY(100vh);
@@ -46,39 +76,37 @@
       }
     }
 
-    .btn-musica {
-      margin-top: 20px;
-      display: inline-block;
-      background-color: white;
-      color: red;
-      padding: 10px 20px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 0 10px white;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-
-    .btn-musica:hover {
-      background-color: red;
-      color: white;
-      box-shadow: 0 0 20px red;
+    /* Opcional: ocultar o player de áudio */
+    #musica {
+      display: none;
     }
   </style>
 </head>
 <body>
 
-  <!-- MENSAGEM -->
+  <!-- Mensagem com botão -->
   <div class="container">
-    ❤️ Quer ser a patrocinadora oficial da minha vida sem rumo? ❤️<br><br>
+    ❤️ Quer ser a patrocinadora oficial da minha vida sem rumo? ❤️<br /><br />
     <button class="btn-musica" onclick="tocarMusica()">
       💌 Toque para ouvir
     </button>
   </div>
 
-  <!-- CORAÇÕES SUBINDO -->
+  <!-- Player de áudio oculto -->
+  <audio id="musica" src="Edward Sharpe & The Magnetic Zeros - Home (Official Video).mp3" type="audio/mpeg" loop></audio>
+
   <script>
+    // Função para tocar a música quando clicar no botão
+    function tocarMusica() {
+      const audio = document.getElementById('musica');
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    }
+
+    // Função que cria os corações flutuantes
     function createHeart() {
       const heart = document.createElement("div");
       heart.classList.add("heart");
@@ -87,49 +115,14 @@
       heart.innerText = "❤️";
       document.body.appendChild(heart);
 
+      // Remove o coração após 5 segundos para não poluir o DOM
       setTimeout(() => {
         heart.remove();
       }, 5000);
     }
 
+    // Cria corações a cada 300ms
     setInterval(createHeart, 300);
-  </script>
-
-  <!-- ÁUDIO -->
-  <audio id="musica" src="<audio controls>
-  <source src="Edward Sharpe & The Magnetic Zeros - Home (Official Video).mp3" type="audio/mpeg" />
-</audio>
-" type="audio/mpeg" loop></audio>
-
-  <script>
-    function tocarMusica() {
-      const audio = document.getElementById('musica');
-      audio.play();
-    }
-     <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <title>Player de Música</title>
-</head>
-<body>
-
-  <h2>Tocando: Edward Sharpe & The Magnetic Zeros - Home</h2>
-
-  <audio id="player" controls>
-    <source src="Edward Sharpe & The Magnetic Zeros - Home (Official Video).mp3" type="audio/mpeg" />
-    Seu navegador não suporta o elemento de áudio.
-  </audio>
-
-  <script>
-    // Opcional: exemplo para tocar automaticamente
-    const audioPlayer = document.getElementById('player');
-    // audioPlayer.play(); // descomente para tocar automaticamente ao abrir a página
-  </script>
-
-</body>
-</html>
-
   </script>
 
 </body>
