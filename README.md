@@ -106,6 +106,30 @@
       const audio = document.getElementById('musica');
       audio.play();
     }
+     <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Player de Música</title>
+</head>
+<body>
+
+  <h2>Tocando: Edward Sharpe & The Magnetic Zeros - Home</h2>
+
+  <audio id="player" controls>
+    <source src="Edward Sharpe & The Magnetic Zeros - Home (Official Video).mp3" type="audio/mpeg" />
+    Seu navegador não suporta o elemento de áudio.
+  </audio>
+
+  <script>
+    // Opcional: exemplo para tocar automaticamente
+    const audioPlayer = document.getElementById('player');
+    // audioPlayer.play(); // descomente para tocar automaticamente ao abrir a página
+  </script>
+
+</body>
+</html>
+
   </script>
 
 </body>
